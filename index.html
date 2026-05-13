@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Rehabi-Patch | Terapia Inteligente</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehabi-Patch | Terapia para adultos mayores</title>
     <style>
         * {
             margin: 0;
@@ -64,6 +64,9 @@
             font-weight: bold;
             display: inline-block;
             margin-top: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
         .patch-card {
@@ -74,10 +77,17 @@
             flex: 0.8;
         }
 
+        .patch-image {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
         .simulated-patch {
             background: #2c3e44;
             border-radius: 40px;
-            padding: 30px;
+            padding: 20px;
             color: white;
         }
 
@@ -148,6 +158,14 @@
             text-align: center;
         }
 
+        .info-destacada {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .hero-text h1 {
                 font-size: 1.5rem;
@@ -164,11 +182,11 @@
             <div class="hero-text">
                 <h1>Movimiento que transforma vidas</h1>
                 <p>Termo-transferencia controlada + microcorrientes. Alivio, relajación y electroestimulación para adultos mayores.</p>
-                <a href="#" class="btn-primary" onclick="alert('Demo académica: Rehabi-Patch - Producto ficticio para tarea')">Ver más información</a>
+                <button class="btn-primary" onclick="mostrarInformacion()">Ver más información</button>
             </div>
             <div class="patch-card">
+                <img src="parche.jpg" alt="Rehabi-Patch" class="patch-image" onerror="this.src='https://via.placeholder.com/280x300?text=Rehabi-Patch'">
                 <div class="simulated-patch">
-                    <h3>REHABI-PATCH</h3>
                     <p>SENSOR A | ELECTRODO 1 | SENSOR B</p>
                     <p>⚡ USB-C</p>
                 </div>
@@ -181,10 +199,10 @@
     <section>
         <h2 class="section-title">Tecnología de recuperación</h2>
         <div class="grid-benefits">
-            <div class="benefit-card">🔥 <h3>Termo-transferencia</h3><p>Calor terapéutico controlado</p></div>
+            <div class="benefit-card">🔥 <h3>Termo-transferencia</h3><p>Efecto vasodilatador beneficioso</p></div>
             <div class="benefit-card">💆 <h3>Alivio inmediato</h3><p>Reduce molestias musculares</p></div>
-            <div class="benefit-card">🌀 <h3>Relajación</h3><p>Calma la tensión muscular</p></div>
-            <div class="benefit-card">⚡ <h3>Electroestimulación</h3><p>Reactiva la comunicación nerviosa</p></div>
+            <div class="benefit-card">🌀 <h3>Relajación</h3><p>Proceso adaptativo sin repercutir en la piel</p></div>
+            <div class="benefit-card">⚡ <h3>Electroestimulación</h3><p>Activa el área muscular específica</p></div>
         </div>
     </section>
 
@@ -198,20 +216,9 @@
         </div>
     </section>
 
-    <section>
-        <h2 class="section-title">Contenido del producto</h2>
-        <div style="background: white; padding: 25px; border-radius: 20px;">
-            <ul style="list-style: none;">
-                <li>✅ 1x Parche Rehabi-Patch All-in-One</li>
-                <li>✅ 2x Bandas adhesivas de repuesto</li>
-                <li>✅ 1x Cable USB-C Ultra-Fast</li>
-                <li>✅ 1x Manual de usuario</li>
-            </ul>
-            <div style="margin-top: 20px; padding: 15px; background: #e9f0f3; border-radius: 15px;">
-                <strong>Modelo:</strong> RP-2026-X | <strong>Batería:</strong> 24h | <strong>Frecuencia:</strong> 1-150Hz
-            </div>
-        </div>
-    </section>
+    <div class="info-destacada">
+        <strong>📊 Excelentes resultados</strong> - Terapia adaptada para pacientes geriátricos con niveles seguros y soportables
+    </div>
 
     <div class="advertencia">
         <strong>⚠️ ADVERTENCIA:</strong> No usar sobre heridas abiertas, cerca del corazón o con marcapasos.
@@ -221,9 +228,36 @@
 <footer>
     <div class="container">
         <p>Rehabi-Patch | Unidad de Investigación Fisioterapéutica Azul Acero</p>
-        <p>Hecho en Venezuela | Página ficticia para tarea académica</p>
+        <p>Hecho en Venezuela | Terapia para adultos mayores</p>
     </div>
 </footer>
+
+<script>
+function mostrarInformacion() {
+    alert("🔬 REHABI-PATCH - Beneficios para pacientes geriátricos\n\n" +
+          "✅ BENEFICIOS PARA LA SALUD:\n" +
+          "• Excelentes resultados comprobados\n" +
+          "• Terapia segura y adaptada para adultos mayores\n" +
+          "• Beneficio integral para su salud\n\n" +
+          "🔥 EFECTO TERMO-TERAPIA:\n" +
+          "• Activa un potente efecto vasodilatador\n" +
+          "• Altamente beneficioso para el adulto mayor\n" +
+          "• Mejora la circulación sanguínea naturalmente\n\n" +
+          "⚡ ELECTROESTIMULACIÓN INTELIGENTE:\n" +
+          "• Activa el área muscular específica\n" +
+          "• Genera un proceso de relajación profunda\n" +
+          "• Adaptación automática sin repercutir en la piel\n" +
+          "• Niveles ajustados al paciente geriátrico\n\n" +
+          "🛡️ SEGURIDAD Y CONFORT:\n" +
+          "• Funciona en niveles soportables\n" +
+          "• No daña la piel sensible\n" +
+          "• Silicona médica hipoalergénica\n\n" +
+          "📊 RESULTADOS:\n" +
+          "• Mejora la movilidad y calidad de vida\n" +
+          "• Reduce contracturas y molestias\n" +
+          "• Pacientes con mejor bienestar diario");
+}
+</script>
 
 </body>
 </html>
