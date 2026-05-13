@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Rehabi-Patch | Terapia Inteligente</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fc;
+            color: #1e2a3e;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0b2b3b 0%, #144e62 100%);
+            color: white;
+            padding: 30px 0 40px 0;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background: #f9b43a;
+            padding: 12px 25px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #1e2a3e;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .patch-card {
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            text-align: center;
+            flex: 0.8;
+        }
+
+        .simulated-patch {
+            background: #2c3e44;
+            border-radius: 40px;
+            padding: 30px;
+            color: white;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #144e62;
+        }
+
+        .grid-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .step-item {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            background: #144e62;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+        }
+
+        .advertencia {
+            background: #fff6e5;
+            border-left: 5px solid #f9b43a;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        footer {
+            background: #0b2b3b;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="brand">⚡ REHABI-PATCH</div>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Movimiento que transforma vidas</h1>
+                <p>Termo-transferencia controlada + microcorrientes. Alivio, relajación y electroestimulación para adultos mayores.</p>
+                <a href="#" class="btn-primary" onclick="alert('Demo académica: Rehabi-Patch - Producto ficticio para tarea')">Ver más información</a>
+            </div>
+            <div class="patch-card">
+                <div class="simulated-patch">
+                    <h3>REHABI-PATCH</h3>
+                    <p>SENSOR A | ELECTRODO 1 | SENSOR B</p>
+                    <p>⚡ USB-C</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">Tecnología de recuperación</h2>
+        <div class="grid-benefits">
+            <div class="benefit-card">🔥 <h3>Termo-transferencia</h3><p>Calor terapéutico controlado</p></div>
+            <div class="benefit-card">💆 <h3>Alivio inmediato</h3><p>Reduce molestias musculares</p></div>
+            <div class="benefit-card">🌀 <h3>Relajación</h3><p>Calma la tensión muscular</p></div>
+            <div class="benefit-card">⚡ <h3>Electroestimulación</h3><p>Reactiva la comunicación nerviosa</p></div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Guía rápida</h2>
+        <div class="steps">
+            <div class="step-item"><div class="step-number">1</div><h4>Limpiar</h4><p>Limpie el área con jabón neutro</p></div>
+            <div class="step-item"><div class="step-number">2</div><h4>Preparar</h4><p>Retire el protector adhesivo</p></div>
+            <div class="step-item"><div class="step-number">3</div><h4>Colocar</h4><p>Adhiera sobre el músculo</p></div>
+            <div class="step-item"><div class="step-number">4</div><h4>Vincular</h4><p>Abra la app móvil</p></div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Contenido del producto</h2>
+        <div style="background: white; padding: 25px; border-radius: 20px;">
+            <ul style="list-style: none;">
+                <li>✅ 1x Parche Rehabi-Patch All-in-One</li>
+                <li>✅ 2x Bandas adhesivas de repuesto</li>
+                <li>✅ 1x Cable USB-C Ultra-Fast</li>
+                <li>✅ 1x Manual de usuario</li>
+            </ul>
+            <div style="margin-top: 20px; padding: 15px; background: #e9f0f3; border-radius: 15px;">
+                <strong>Modelo:</strong> RP-2026-X | <strong>Batería:</strong> 24h | <strong>Frecuencia:</strong> 1-150Hz
+            </div>
+        </div>
+    </section>
+
+    <div class="advertencia">
+        <strong>⚠️ ADVERTENCIA:</strong> No usar sobre heridas abiertas, cerca del corazón o con marcapasos.
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>Rehabi-Patch | Unidad de Investigación Fisioterapéutica Azul Acero</p>
+        <p>Hecho en Venezuela | Página ficticia para tarea académica</p>
+    </div>
+</footer>
+
+</body>
+</html>
