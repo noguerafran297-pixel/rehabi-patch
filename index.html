@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Rehabi-Patch | Terapia para adultos mayores</title>
     <style>
         * {
@@ -67,28 +67,94 @@
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
         }
 
+        /* Carrusel de imágenes */
         .patch-card {
             background: white;
             border-radius: 30px;
             padding: 20px;
             text-align: center;
             flex: 0.8;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            display: flex;
+            gap: 16px;
+            scroll-behavior: smooth;
+            border-radius: 28px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            padding-bottom: 8px;
+        }
+        .carousel-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .carousel-container::-webkit-scrollbar-track {
+            background: #e0e7eb;
+            border-radius: 10px;
+        }
+        .carousel-container::-webkit-scrollbar-thumb {
+            background: #144e62;
+            border-radius: 10px;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            scroll-snap-align: start;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 12px;
         }
 
         .patch-image {
             width: 100%;
             max-width: 280px;
-            border-radius: 20px;
-            margin-bottom: 10px;
+            border-radius: 24px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            margin-bottom: 12px;
+        }
+        .indicator {
+            width: 8px;
+            height: 8px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+        .indicator.active {
+            background-color: #144e62;
+            width: 24px;
+            border-radius: 10px;
+        }
         .simulated-patch {
             background: #2c3e44;
             border-radius: 40px;
-            padding: 20px;
+            padding: 12px 16px;
             color: white;
+            margin-top: 16px;
+            font-size: 0.85rem;
         }
 
         section {
@@ -115,6 +181,10 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-3px);
         }
 
         .steps {
@@ -128,6 +198,7 @@
             padding: 20px;
             border-radius: 20px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         .step-number {
@@ -164,11 +235,18 @@
             border-radius: 15px;
             margin-top: 20px;
             text-align: center;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
             .hero-text h1 {
                 font-size: 1.5rem;
+            }
+            .hero {
+                flex-direction: column;
+            }
+            .patch-card {
+                width: 100%;
             }
         }
     </style>
@@ -185,10 +263,27 @@
                 <button class="btn-primary" onclick="mostrarInformacion()">Ver más información</button>
             </div>
             <div class="patch-card">
-                <img src="parche.jpg" alt="Rehabi-Patch" class="patch-image" onerror="this.src='https://via.placeholder.com/280x300?text=Rehabi-Patch'">
+                <!-- CARRUSEL DE IMÁGENES: parche.jpg , parche2.jpg , parche3.jpg -->
+                <div class="carousel-container" id="imageCarousel">
+                    <div class="carousel-slide">
+                        <img src="parche.jpg" alt="Rehabi-Patch vista 1" class="patch-image" onerror="this.src='https://via.placeholder.com/280x300?text=Parche+Principal'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="parche2.jpg" alt="Rehabi-Patch vista 2" class="patch-image" onerror="this.src='https://via.placeholder.com/280x300?text=Parche+Lateral'">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="parche3.jpg" alt="Rehabi-Patch vista 3" class="patch-image" onerror="this.src='https://via.placeholder.com/280x300?text=Detalle+Parche'">
+                    </div>
+                </div>
+                <div class="carousel-indicators" id="indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                </div>
                 <div class="simulated-patch">
                     <p>SENSOR A | ELECTRODO 1 | SENSOR B</p>
-                    <p>⚡ USB-C</p>
+                    <p>⚡ USB-C · Adaptador de corriente</p>
+                    <p style="font-size:0.7rem; margin-top:5px;">🖼️ Desliza las imágenes →</p>
                 </div>
             </div>
         </div>
@@ -199,65 +294,103 @@
     <section>
         <h2 class="section-title">Tecnología de recuperación</h2>
         <div class="grid-benefits">
-            <div class="benefit-card">🔥 <h3>Termo-transferencia</h3><p>Efecto vasodilatador beneficioso</p></div>
-            <div class="benefit-card">💆 <h3>Alivio inmediato</h3><p>Reduce molestias musculares</p></div>
-            <div class="benefit-card">🌀 <h3>Relajación</h3><p>Proceso adaptativo sin repercutir en la piel</p></div>
-            <div class="benefit-card">⚡ <h3>Electroestimulación</h3><p>Activa el área muscular específica</p></div>
+            <div class="benefit-card">🔥 <h3>Termo-transferencia</h3><p>Efecto vasodilatador beneficioso · Calor terapéutico controlado</p></div>
+            <div class="benefit-card">💆 <h3>Alivio inmediato</h3><p>Reduce molestias musculares y contracturas</p></div>
+            <div class="benefit-card">🌀 <h3>Relajación</h3><p>Proceso adaptativo sin repercutir en la piel sensible</p></div>
+            <div class="benefit-card">⚡ <h3>Electroestimulación</h3><p>Activa el área muscular específica · Frecuencia 1-150Hz</p></div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title">Guía rápida</h2>
+        <h2 class="section-title">Guía de inicio rápido</h2>
         <div class="steps">
-            <div class="step-item"><div class="step-number">1</div><h4>Limpiar</h4><p>Limpie el área con jabón neutro</p></div>
-            <div class="step-item"><div class="step-number">2</div><h4>Preparar</h4><p>Retire el protector adhesivo</p></div>
-            <div class="step-item"><div class="step-number">3</div><h4>Colocar</h4><p>Adhiera sobre el músculo</p></div>
-            <div class="step-item"><div class="step-number">4</div><h4>Vincular</h4><p>Abra la app móvil</p></div>
+            <div class="step-item"><div class="step-number">1</div><h4>🧼 Limpiar</h4><p>Limpie el área con jabón neutro o alcohol, asegúrese que esté seca.</p></div>
+            <div class="step-item"><div class="step-number">2</div><h4>🔌 Preparar</h4><p>Retire el protector adhesivo, verifique electrodos limpios.</p></div>
+            <div class="step-item"><div class="step-number">3</div><h4>📍 Colocar</h4><p>Adhiera firmemente sobre el músculo o articulación objetivo.</p></div>
+            <div class="step-item"><div class="step-number">4</div><h4>📱 Vincular</h4><p>Encienda el adaptador y abra la app. Ajuste automático.</p></div>
         </div>
     </section>
 
     <div class="info-destacada">
-        <strong>📊 Excelentes resultados</strong> - Terapia adaptada para pacientes geriátricos con niveles seguros y soportables
+        📊 <strong>Excelentes resultados</strong> — Terapia adaptada para pacientes geriátricos con niveles seguros y soportables. Efecto vasodilatador + relajación muscular profunda.
     </div>
 
     <div class="advertencia">
-        <strong>⚠️ ADVERTENCIA:</strong> No usar sobre heridas abiertas, cerca del corazón o con marcapasos.
+        <strong>⚠️ ADVERTENCIA:</strong> No utilizar sobre heridas abiertas, cerca del corazón o si el paciente posee marcapasos. Si observa irritación o calor excesivo, suspenda el uso. No sumergir en agua.
     </div>
 </div>
 
 <footer>
     <div class="container">
         <p>Rehabi-Patch | Unidad de Investigación Fisioterapéutica Azul Acero</p>
+        <p>Diseñado en colaboración con el Centro Internacional de Geriatría · Lote RT-2026-X-AA</p>
         <p>Hecho en Venezuela | Terapia para adultos mayores</p>
     </div>
 </footer>
 
 <script>
-function mostrarInformacion() {
-    alert("🔬 REHABI-PATCH - Beneficios para pacientes geriátricos\n\n" +
-          "✅ BENEFICIOS PARA LA SALUD:\n" +
-          "• Excelentes resultados comprobados\n" +
-          "• Terapia segura y adaptada para adultos mayores\n" +
-          "• Beneficio integral para su salud\n\n" +
-          "🔥 EFECTO TERMO-TERAPIA:\n" +
-          "• Activa un potente efecto vasodilatador\n" +
-          "• Altamente beneficioso para el adulto mayor\n" +
-          "• Mejora la circulación sanguínea naturalmente\n\n" +
-          "⚡ ELECTROESTIMULACIÓN INTELIGENTE:\n" +
-          "• Activa el área muscular específica\n" +
-          "• Genera un proceso de relajación profunda\n" +
-          "• Adaptación automática sin repercutir en la piel\n" +
-          "• Niveles ajustados al paciente geriátrico\n\n" +
-          "🛡️ SEGURIDAD Y CONFORT:\n" +
-          "• Funciona en niveles soportables\n" +
-          "• No daña la piel sensible\n" +
-          "• Silicona médica hipoalergénica\n\n" +
-          "📊 RESULTADOS:\n" +
-          "• Mejora la movilidad y calidad de vida\n" +
-          "• Reduce contracturas y molestias\n" +
-          "• Pacientes con mejor bienestar diario");
-}
-</script>
+    // Función principal de alerta con toda la información solicitada
+    function mostrarInformacion() {
+        alert("🔬 REHABI-PATCH - Beneficios para pacientes geriátricos\n\n" +
+              "✅ BENEFICIOS PARA LA SALUD:\n" +
+              "• Excelentes resultados comprobados\n" +
+              "• Terapia segura y adaptada para adultos mayores\n" +
+              "• Beneficio integral para su salud\n\n" +
+              "🔥 EFECTO TERMO-TERAPIA:\n" +
+              "• Activa un potente efecto vasodilatador\n" +
+              "• Altamente beneficioso para el adulto mayor\n" +
+              "• Mejora la circulación sanguínea naturalmente\n\n" +
+              "⚡ ELECTROESTIMULACIÓN INTELIGENTE:\n" +
+              "• Activa el área muscular específica\n" +
+              "• Genera un proceso de relajación profunda\n" +
+              "• Adaptación automática sin repercutir en la piel\n" +
+              "• Niveles ajustados al paciente geriátrico\n\n" +
+              "🛡️ SEGURIDAD Y CONFORT:\n" +
+              "• Funciona en niveles soportables\n" +
+              "• No daña la piel sensible\n" +
+              "• Silicona médica hipoalergénica\n\n" +
+              "📊 RESULTADOS:\n" +
+              "• Mejora la movilidad y calidad de vida\n" +
+              "• Reduce contracturas y molestias\n" +
+              "• Pacientes con mejor bienestar diario");
+    }
 
+    // --- Sincronizar indicadores activos con el desplazamiento del carrusel ---
+    const carousel = document.getElementById('imageCarousel');
+    const indicators = document.querySelectorAll('.indicator');
+
+    function updateActiveIndicator() {
+        if (!carousel) return;
+        const scrollLeft = carousel.scrollLeft;
+        const slideWidth = carousel.clientWidth;
+        const activeIndex = Math.round(scrollLeft / slideWidth);
+        indicators.forEach((ind, idx) => {
+            if (idx === activeIndex) {
+                ind.classList.add('active');
+            } else {
+                ind.classList.remove('active');
+            }
+        });
+    }
+
+    if (carousel) {
+        carousel.addEventListener('scroll', updateActiveIndicator);
+        // También al redimensionar o carga
+        window.addEventListener('resize', updateActiveIndicator);
+        setTimeout(updateActiveIndicator, 100);
+        // Añadir evento de clic en cada indicador para navegar manualmente (mejor UX)
+        indicators.forEach((indicator, idx) => {
+            indicator.addEventListener('click', () => {
+                if (carousel) {
+                    const slideWidth = carousel.clientWidth;
+                    carousel.scrollTo({
+                        left: slideWidth * idx,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+</script>
 </body>
 </html>
